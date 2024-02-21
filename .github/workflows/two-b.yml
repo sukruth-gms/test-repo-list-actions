@@ -23,6 +23,7 @@ jobs:
               git config --global user.email "sukruth700@gmail.com"
               git config --global user.name "Sukruth"
               git clone https://${{secrets.TOKEN}}@github.com/Sonal0409/DevOpsClassCodes.git
+              mvn clean
               mvn install
               mvn compile
               mvn test
