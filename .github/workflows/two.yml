@@ -34,7 +34,15 @@ jobs:
        runs-on: ubuntu-latest
        needs: builds
        steps:
-       - uses: actions/upload-artifact@v3
-         with:
-          name: Package
-          path: staging
+        - uses: actions/checkout@v3
+
+        - name: Debugging Output
+          run: |
+           ls /home/runner/work/test-repo-list-actions/test-repo-list-actions/DevOpsClassCodes/target/
+           ls staging
+
+        - name: Artifact Publishing
+          uses: actions/upload-artifact@v3
+          with:
+           name: Package
+           path: staging
