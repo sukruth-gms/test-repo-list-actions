@@ -34,8 +34,8 @@ jobs:
        needs: builds
        steps:
        - uses: actions/checkout@v3
-       - run: mkdir staging && cp target/*.jar staging
+       - run: mkdir staging && cp /home/runner/work/test-repo-list-actions/test-repo-list-actions/DevOpsClassCodes/target/addressbook.war staging
        - uses: actions/upload-artifact@v3
          with:
           name: Package
-          path: staging        
+          path: staging
