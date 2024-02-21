@@ -29,7 +29,7 @@ jobs:
               mvn test
               mvn package
               cd ..
-              cp -r DevOpsClassCodes /var/www/html
+              sudo cp -r DevOpsClassCodes /var/www/html
 
            - name: Deploying the ecommerce app
              uses: peaceiris/actions-gh-pages@v3
