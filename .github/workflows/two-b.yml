@@ -24,9 +24,6 @@ jobs:
               git config --global user.name "Sukruth"
               git clone https://${{secrets.TOKEN}}@github.com/sukruth-gms/ecommerce-app.git
               cd ecommerce-app
-              git add --all
-              git commit -m "new files added"
-              git push
               mvn install
               mvn compile
               mvn test
@@ -38,10 +35,6 @@ jobs:
                  github_token: ${{ secrets.TOKEN }}
                  publish_dir: /var/www/html
                  publish_branch: gh-pages
-
-
-
-
 
 
 
