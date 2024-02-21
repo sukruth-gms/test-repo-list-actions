@@ -22,8 +22,8 @@ jobs:
               mvn --version
               git config --global user.email "sukruth700@gmail.com"
               git config --global user.name "Sukruth"
-              git clone https://${{secrets.TOKEN}}@github.com/sukruth-gms/ecommerce-app.git
-              cd ecommerce-app
+              git clone https://${{secrets.TOKEN}}@github.com/Sonal0409/DevOpsClassCodes.git
+              cd DevOpsClassCodes
               mvn install
               mvn compile
               mvn test
