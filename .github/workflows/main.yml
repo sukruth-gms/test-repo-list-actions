@@ -1,10 +1,7 @@
 name: GitHub Actions1
 
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch: # This allows manual triggering
+  workflow_dispatch: null
 
 jobs:
   build:
