@@ -1,7 +1,9 @@
 ---
 name: deploy HTML web into nginx server
 on:
-  workflow_dispatch: null
+  push:
+     branches:
+           - main  
 jobs:
   builds:
     runs-on: ubuntu-latest
@@ -18,5 +20,8 @@ jobs:
           git clone https://${{ secrets.TOKEN }}@github.com/sukruth-gms/new-web-index.git
           cd new-web-index
           sudo cp -r assets index.html readme.txt /var/www/html/
-      - name: Display HTML content
-        run: cat /var/www/html/index.html
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: /var/www/html
