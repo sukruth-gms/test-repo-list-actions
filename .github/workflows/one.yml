@@ -27,9 +27,6 @@ jobs:
         run: |
           git clone https://${{ secrets.TOKEN }}@github.com/sukruth-gms/new-web-index.git
           cd new-web-index
-
-      - name: Copy Files to Nginx Directory
-        run: |
           sudo cp -r assets index.html readme.txt /var/www/html/
 
       - name: Deploy to GitHub Pages
