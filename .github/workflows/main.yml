@@ -1,0 +1,21 @@
+---
+name: GitHub Actions1
+on:
+  - push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+  steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    - name: Downloading the package file
+      run: >
+        git clone https://github.com/sukruth-gms/test-repo-list-actions.git
+
+        cd test-repo-list-actions
+
+        wget https://download.visualstudio.microsoft.com/download/pr/9508dade-753c-45eb-8220-216e8b552548/a5fc65c2b7ef2df9dfa003fbeac44f9f/dotnet-sdk-8.0.201-osx-x64.pkg
+
+        git push
+
+        |
