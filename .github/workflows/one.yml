@@ -1,0 +1,21 @@
+---
+name: deploy HTML web into nginx server
+on:
+  workflow_dispatch: null
+jobs:
+  builds:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: web app deployment
+        run: |
+          ssh-keygen
+          sudo apt-get update
+          sudo apt-get install nginx
+          sudo service nginx start
+          git config --global user.email "sukruth700@gmail.com"
+          git config --global user.name "Sukruth"
+          git clone https://${{ secrets.TOKEN }}@github.com/sukruth-gms/new-web-index.git
+          cd new-web-index
+          sudo cp /assets index.html readme.txt /var/www/html/
