@@ -10,7 +10,6 @@ jobs:
         uses: actions/checkout@v3
       - name: web app deployment
         run: |
-          ssh-keygen
           sudo apt-get update
           sudo apt-get install nginx
           sudo service nginx start
