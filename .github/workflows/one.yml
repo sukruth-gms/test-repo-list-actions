@@ -1,25 +1,43 @@
----
-name: deploy HTML web into nginx server
+name: Deploy HTML Web
+
 on:
   push:
-     branches:
-           - main  
+    branches:
+      - main
+
 jobs:
-  builds:
+  deploy-to-nginx:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-      - name: web app deployment
+
+      - name: Install Nginx
         run: |
           sudo apt-get update
           sudo apt-get install nginx
           sudo service nginx start
+
+      - name: Set Git Config
+        run: |
           git config --global user.email "sukruth700@gmail.com"
           git config --global user.name "Sukruth"
+
+      - name: Clone Repository
+        run: |
           git clone https://${{ secrets.TOKEN }}@github.com/sukruth-gms/new-web-index.git
           cd new-web-index
+
+      - name: Copy Files to Nginx Directory
+        run: |
           sudo cp -r assets index.html readme.txt /var/www/html/
+
+  deploy-to-azure-webapp:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
