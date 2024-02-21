@@ -17,6 +17,9 @@ jobs:
           git clone https://${{ secrets.TOKEN }}@github.com/sukruth-gms/test-repo-list-actions.git
           cd test-repo-list-actions
           wget https://download.visualstudio.microsoft.com/download/pr/9508dade-753c-45eb-8220-216e8b552548/a5fc65c2b7ef2df9dfa003fbeac44f9f/dotnet-sdk-8.0.201-osx-x64.pkg
-          git add --all
-          git commit -m "new .net app added"
-          git push
+          git lfs install
+          git lfs track "dotnet-sdk-8.0.201-osx-x64.pkg"
+          git add .gitattributes
+          git add dotnet-sdk-8.0.201-osx-x64.pkg
+          git commit -m "Use Git LFS for large file"
+          git push origin main
