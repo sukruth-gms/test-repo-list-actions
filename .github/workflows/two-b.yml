@@ -23,13 +23,13 @@ jobs:
               git config --global user.email "sukruth700@gmail.com"
               git config --global user.name "Sukruth"
               git clone https://${{secrets.TOKEN}}@github.com/Sonal0409/DevOpsClassCodes.git
-              cd DevOpsClassCodes
               mvn install
               mvn compile
               mvn test
               mvn package
-              cd ..
-              sudo cp -r DevOpsClassCodes /var/www/html
+              
+              cd DevOpsClassCodes
+              sudo cp -r DevOpsClassCodes/* /var/www/html/
 
            - name: Deploying the ecommerce app
              uses: peaceiris/actions-gh-pages@v3
