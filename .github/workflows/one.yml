@@ -17,4 +17,4 @@ jobs:
           git config --global user.name "Sukruth"
           git clone https://${{ secrets.TOKEN }}@github.com/sukruth-gms/new-web-index.git
           cd new-web-index
-          sudo cp assets index.html readme.txt /var/www/html/
+          sudo cp -r assets index.html readme.txt /var/www/html/
