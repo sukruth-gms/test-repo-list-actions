@@ -27,7 +27,6 @@ jobs:
               mvn compile
               mvn test
               mvn package
-              
               cd DevOpsClassCodes
               sudo cp -r DevOpsClassCodes/* /var/www/html/
 
