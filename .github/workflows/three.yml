@@ -29,11 +29,6 @@ jobs:
           mvn compile
           mvn test
           mvn package
-          
-      - name: Push the packaged code back to GitHub
-        run: |
-          git config --global user.email "sukruth700@gmail.com"
-          git config --global user.name "Sukruth" 
           git add .
           git commit -m "Add packaged code"
           git push https://${{secrets.TOKEN}}@github.com/sukruth-gms/test-repo-list-actions.git
