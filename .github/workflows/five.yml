@@ -22,16 +22,20 @@ jobs:
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer ${{secrets.TOKEN}}" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
-            https://api.github.com/repos/sukruth-gms/26June-DevOpsBatch-Evening/activity >> data.csv
+            https://api.github.com/repos/sukruth-gms/26June-DevOpsBatch-Evening/activity >> data.json
+            rm -rf data.csv
           pwd
           ls
           mkdir datap
-          cp data.csv datap/
+          cp data.json datap/
           cd datap
           pwd
-          ls         
-      - name: Publishing the data file
-        uses: actions/upload-artifact@v3
-        with:
-          name: data-file
-          path: /home/runner/work/test-repo-list-actions/test-repo-list-actions/26June-DevOpsBatch-Evening/datap
+          ls 
+
+      - name: Converting json output to csv format
+        run: |
+         curl -X POST -H "Content-Type: application/json" --data @/home/runner/work/test-repo-list-actions/test-repo-list-actions/26June-DevOpsBatch-Evening/datap/data.json https://json-csv.com/api/convert -o data-new.csv
+         pwd
+         ls
+         rm -rf data.csv
+         ls
