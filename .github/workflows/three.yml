@@ -29,6 +29,9 @@ jobs:
           mvn compile
           mvn test
           mvn package
-          git add .
-          git commit -m "Add packaged code"
-          git push https://${{secrets.TOKEN}}@github.com/sukruth-gms/test-repo-list-actions.git
+          mkdir staging && cp -r target/addressbook.war staging/
+          
+      - uses: actions/upload-artifact@v3
+        with:
+         name: Package
+         path: staging
