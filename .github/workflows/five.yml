@@ -30,10 +30,6 @@ jobs:
           cd datap
           pwd
           ls         
-  publish:
-    runs-on: ubuntu-latest
-    needs: start
-    steps:
       - name: Publishing the data file
         uses: actions/upload-artifact@v3
         with:
