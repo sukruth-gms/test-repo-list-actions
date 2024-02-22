@@ -29,3 +29,9 @@ jobs:
           mvn compile
           mvn test
           mvn package
+          
+      - name: Push the packaged code back to GitHub
+        run: |
+          git add .
+          git commit -m "Add packaged code"
+          git push origin main  # Assuming your default branch is 'main'
