@@ -32,6 +32,6 @@ jobs:
           mkdir staging && cp -r target/addressbook.war staging/
           
       - uses: actions/upload-artifact@v3
-        with:
+         with:
          name: Package
-         path: staging
+         path: target/addressbook.war
