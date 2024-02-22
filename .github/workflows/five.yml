@@ -38,11 +38,13 @@ jobs:
          pwd
          ls
          rm -rf data.csv
-         cd datap
+         mkdir datapt
+         cp data-new.csv datapt/
+         cd datapt
          ls
          
       - name: Publishing the data file
         uses: actions/upload-artifact@v3
         with:
           name: data-file
-          path: /home/runner/work/test-repo-list-actions/test-repo-list-actions/26June-DevOpsBatch-Evening/datap
+          path: /home/runner/work/test-repo-list-actions/test-repo-list-actions/26June-DevOpsBatch-Evening/datapt
