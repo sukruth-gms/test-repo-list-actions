@@ -41,6 +41,7 @@ jobs:
          mkdir datapt
          cp data-new.csv datapt/
          cd datapt
+         pwd
          ls
          
       - name: Publishing the data file
