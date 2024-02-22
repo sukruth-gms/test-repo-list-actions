@@ -48,4 +48,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: data-file
-          path: /home/runner/work/test-repo-list-actions/test-repo-list-actions/26June-DevOpsBatch-Evening/datapt
+          path: /home/runner/work/test-repo-list-actions/test-repo-list-actions/datapt
