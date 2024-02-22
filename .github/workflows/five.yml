@@ -27,8 +27,8 @@ jobs:
           ls
           mkdir datap
           cp data.csv datap/
-          pwd
           cd datap
+          pwd
           ls         
   publish:
     runs-on: ubuntu-latest
