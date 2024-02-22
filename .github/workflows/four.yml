@@ -30,9 +30,12 @@ jobs:
           mvn test
           mvn package
           pwd
-          mkdir staging && cp -r target/addressbook.war staging/
+          mkdir staging
+          cp -r /home/runner/work/test-repo-list-actions/test-repo-list-actions/DevOpsClassCodes/target/addressbook.war staging/
+          cd staging/
+          ls
           
       - uses: actions/upload-artifact@v3
         with:
          name: Package
-         path: target/addressbook
+         path: staging
