@@ -1,0 +1,37 @@
+name: CI of the app code using Maven
+
+on:
+  workflow_dispatch: null
+
+jobs:
+  builds:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+
+      - name: Installing Nginx server
+        run: |
+          sudo apt-get update
+          sudo apt-get install nginx
+          sudo service nginx start
+
+      - name: App code repository configuration
+        run: |
+          sudo apt-get update
+          sudo apt-get install maven
+          mvn --version
+          git config --global user.email "sukruth700@gmail.com"
+          git config --global user.name "Sukruth" 
+          git clone https://${{secrets.TOKEN}}@github.com/Sonal0409/DevOpsClassCodes.git
+          cd DevOpsClassCodes
+          mvn install
+          mvn compile
+          mvn test
+          mvn package
+          mkdir staging && cp -r target/addressbook.war staging/
+          
+      - uses: actions/upload-artifact@v3
+        with:
+         name: Package
+         path: target/addressbook.war
