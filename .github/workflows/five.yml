@@ -25,7 +25,11 @@ jobs:
             https://api.github.com/repos/sukruth-gms/26June-DevOpsBatch-Evening/activity >> data.csv
           pwd
           ls
-
+          mkdir datap
+          cp data.csv datap/
+          pwd
+          cd datap
+          ls         
   publish:
     runs-on: ubuntu-latest
     needs: start
@@ -34,4 +38,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: data-file
-          path: /home/runner/work/test-repo-list-actions/test-repo-list-actions/26June-DevOpsBatch-Evening/data.csv
+          path: datap
