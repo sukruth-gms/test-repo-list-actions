@@ -34,7 +34,6 @@ jobs:
           cp -r /home/runner/work/test-repo-list-actions/test-repo-list-actions/DevOpsClassCodes/target/addressbook.war staging/
           cd staging/
           ls
-          mvn jetty:run
           
       - uses: actions/upload-artifact@v3
         with:
