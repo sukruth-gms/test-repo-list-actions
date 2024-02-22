@@ -1,4 +1,4 @@
-name: CI of the app code using Maven
+name: CI maven
 
 on:
   workflow_dispatch: null
