@@ -1,37 +1,37 @@
-name: Git repository activity data CI/CD
+name: Git Repository Activity Data CI/CD
 
 on:
-   push:
-        branches: main
+  push:
+    branches:
+      - main
 
 jobs:
-    start:
-      runs-on: ubuntu-latest
-      steps:
-       - name: Checkout the repository
-         uses: actions/checkout@v3
+  start:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
 
-       - name: repository configuration
-         run: |
+      - name: Repository Configuration
+        run: |
           git config --global user.name "Sukruth"
           git config --global user.email "sukruth700@gmail.com"
           git clone https://${{secrets.TOKEN}}@github.com/sukruth-gms/26June-DevOpsBatch-Evening.git
           cd 26June-DevOpsBatch-Evening
           curl -L \
-          -H "Accept: application/vnd.github+json" \
-          -H "Authorization: Bearer ${{secrets.TOKEN}}" \
-          -H "X-GitHub-Api-Version: 2022-11-28" \
-           https://api.github.com/repos/sukruth-gms/26June-DevOpsBatch-Evening/activity >> data.csv
-           pwd
-           ls
-    #publish: 
-           #runs-on: ubuntu-latest
-           #needs: start
-           #steps:
-           # - name: Publishing the data file
-              #uses: actions/upload-artifact@v3
-              #with:
-               # name: data-file
-                #path: 
-           
-        
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{secrets.TOKEN}}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/sukruth-gms/26June-DevOpsBatch-Evening/activity >> data.csv
+          pwd
+          ls
+
+  publish:
+    runs-on: ubuntu-latest
+    needs: start
+    steps:
+      - name: Publishing the data file
+        uses: actions/upload-artifact@v3
+        with:
+          name: data-file
+          path: /home/runner/work/test-repo-list-actions/test-repo-list-actions/26June-DevOpsBatch-Evening/*.csv
